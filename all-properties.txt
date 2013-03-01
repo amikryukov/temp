@@ -1,0 +1,169 @@
+##
+#ZOOKEEPER properties
+##
+
+#endpoint where Nodes looking for COORDINATION_SERVER
+chassis.coordinator.zookeeper.endpoint=172.20.6.9:2181
+
+#Agents http server Rises with that port on Coordinator
+chassis.coordination.http.port=8089
+#do not forget to edit that property for Agents
+#	chassis.coordination.http.url=http://172.20.6.9:8089 
+
+
+#
+chassis.coordinator.zookeeper.session.timeout=10000000
+chassis.coordinator.zookeeper.root.node=/root-001
+
+#numbers of threads
+chassis.zookeeper.executor.pool.core=2
+chassis.zookeeper.executor.pool.max=30
+
+## if You want to change this properties, 
+##	You should edit JAGGER_HOME/configuration/coordinationserver/zookeeper.server.properties
+
+tickTime=2000
+initLimit=10
+maxSessionTimeout=1000000
+syncLimit=5
+dataDir=${chassis.workspace}/master/coordination/data
+
+#Zookeeper starts with that port
+clientPort=2181
+
+############################################################
+
+##
+#RDB properties
+##
+
+chassis.storage.rdb.client.driver=com.mysql.jdbc.Driver 
+chassis.storage.rdb.client.url=jdbc:mysql://172.20.6.9:3306/jaggerdb 
+chassis.storage.rdb.username=***** 
+chassis.storage.rdb.password=***** 
+chassis.storage.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect 
+
+#if You want to use H2 do not forget to determine this for Nodes
+chassis.storage.rdb.client.driver=org.h2.Driver
+chassis.storage.rdb.client.url=jdbc:h2:tcp://localhost:8043/jaggerdb/db
+chassis.storage.rdb.username=jagger
+chassis.storage.rdb.password=rocks
+chassis.storage.hibernate.dialect=org.hibernate.dialect.H2Dialect
+
+## H2
+#if you want to edit this properties
+#edit JAGGER_HOME/configuration/rdbserver/storage.h2server.properties
+#be atantive to chengeproperties for Nodes 
+
+tcp
+tcpAllowOthers=true
+tcpPort=8043 
+# baseDir is an absolute or home-relative path to h2 db files
+baseDir=${chassis.workspace}/master/jaggerdb
+user=${chassis.storage.rdb.username}
+password=${chassis.storage.rdb.username}
+
+############################################################
+
+##
+#common for Nodes
+##
+
+#Roels thet Node will play
+#for local mode 
+chassis.roles=chassis.roles=MASTER,KERNEL,COORDINATION_SERVER,RDB_SERVER,HTTP_COORDINATION_SERVER
+
+
+
+
+
+#HDFS point address of Master Node
+chassis.storage.fs.default.name=hdfs://172.56.45.222/ 
+
+#use jBoss for serealisation or no
+chassis.util.usejboss=true
+
+############################################################
+
+##
+#Master
+##
+
+
+#name of session configuration bean that will be executed by master
+chassis.master.session.configuration.bean.name=testHttpTargetConfiguration
+#chassis.master.session.configuration.bean.name=testTcpTrafficTargetConfiguration
+
+#hadoop start properties (i do believe it is useless to show to user )
+hadoop.tmp.dir=${chassis.workspace}/master/storage/tmp
+hadoop.log.dir=${chassis.workspace}/master/storage/log
+hadoop.home.dir=${chassis.workspace}/master/storage/home
+hadoop.id.str=jagger
+dfs.name.dir=${chassis.workspace}/master/storage/hdfs/namedir
+fs.default.name=${chassis.storage.fs.default.name}
+dfs.replication=1
+dfs.support.append=true
+
+
+# chassis.log.storage.bean is bean name that implements FileStorage interface.
+# default were implemented localFileStorage (local mode only), hdfsStorage
+chassis.log.storage.bean=localFileStorage
+
+chassis.log.storage.file.workspace=${chassis.workspace}/storage
+
+#for logging should be changed only if it necessary (increase)
+chassis.log.storage.buffer.flushing.size=10000
+
+############################################################
+
+##
+#REPORTING
+##
+
+# Report format (PDF or HTML)
+chassis.master.reporting.report.format=PDF
+
+# Report file name
+chassis.master.reporting.report.file.name=report.pdf
+
+# Location of root report template (Spring resource location format)
+chassis.master.reporting.root.report.template.location=configuration/reporting/report-container.jrxml
+
+# Baseline session ID for session comparison. If this value is set to '#IDENTITY'
+# then session will be compared with itself (for testing purposes)
+chassis.engine.e1.reporting.session.comparison.baseline.session.id=#IDENTITY
+
+# Turns on/off session comparison section
+chassis.engine.e1.reporting.session.comparison.active=true
+chassis.engine.e1.reporting.session.comparison.monitoring.active=false
+
+chassis.engine.e1.reporting.session.comparison.decision.maker.warning.deviation.threshold=0.5
+
+chassis.engine.e1.reporting.session.comparison.decision.maker.fatal.deviation.threshold=0.8
+
+#affect for interval size in plots
+chassis.engine.e1.reporting.task.point.count=100
+chassis.engine.e1.reporting.task.monitoring.point.count=200
+
+chassis.monitoring.reporting.show.plots.for.each.global=true
+chassis.monitoring.reporting.show.plots.for.each.box=true
+chassis.monitoring.reporting.show.plots.for.each.sut=true
+
+chassis.monitoring.reporting.show.plots.show.numbers=true
+
+#aggregete information from monitoring or not
+chassis.conditions.monitoring.enable=true
+
+report.only=true
+report.session.id=106
+report.session.name=J4G session sample
+report.session.comment=
+
+
+
+
+
+
+
+
+
