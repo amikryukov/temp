@@ -1,0 +1,192 @@
+#
+# Copyright (c) 2010-2012 Grid Dynamics Consulting Services, Inc, All Rights Reserved
+# http://www.griddynamics.com
+#
+# This library is free software; you can redistribute it and/or modify it under the terms of
+# the GNU Lesser General Public License as published by the Free Software Foundation; either
+# version 2.1 of the License, or any later version.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+
+
+# Comma-separated list of roles. When Jagger starts the corresponding services are launched
+#chassis.roles=MASTER,KERNEL,COORDINATION_SERVER,RDB_SERVER
+#chassis.roles=MASTER
+#chassis.roles=RDB_SERVER
+#chassis.roles=COORDINATION_SERVER
+#chassis.roles=MASTER,COORDINATION_SERVER,RDB_SERVER
+#chassis.roles=KERNEL
+chassis.roles=MASTER,KERNEL,COORDINATION_SERVER,RDB_SERVER,HTTP_COORDINATION_SERVER
+
+
+# Name of session configuration bean that will be executed by master
+#chassis.master.session.configuration.bean.name=httpTestTargetConfiguration
+chassis.master.session.configuration.bean.name=testConfiguration
+
+
+
+# chassis.coordination.bean is bean name that implements Coordinator interface.
+# memoryCoordinator (local mode only), zookeeperCoordinator
+chassis.coordination.bean=zookeeperCoordinator
+
+
+# Address and port of ZooKeeper Server
+# Should be detemined on each Node in distributed mode . 2181 default port
+chassis.coordinator.zookeeper.endpoint=172.56.45.222:2181
+
+
+# chassis.log.storage.bean is bean name that implements FileStorage interface.
+# default were implemented localFileStorage (local mode only), hdfsStorage
+chassis.log.storage.bean=hdfsStorage
+
+
+# Address and port of HDFS, MASTER
+# Should be determined on each Node in distributed mode
+chassis.storage.fs.default.name=hdfs://172.56.45.222/ 
+
+
+
+# Parameters of JDBC (H2 and MySQL are currently supported) - default is H2
+chassis.storage.hibernate.batch_size=50
+
+chassis.storage.rdb.client.driver=org.h2.Driver
+chassis.storage.rdb.client.url=jdbc:h2:tcp://localhost:8043/jaggerdb/db 
+#8043 - default port for H2
+chassis.storage.rdb.username=jagger
+chassis.storage.rdb.password=rocks
+chassis.storage.hibernate.dialect=org.hibernate.dialect.H2Dialect
+
+#chassis.storage.rdb.client.driver=com.mysql.jdbc.Driver
+#chassis.storage.rdb.client.url=jdbc:mysql://localhost:3306/jaggerdb
+#chassis.storage.rdb.username=*****
+#chassis.storage.rdb.password=*****
+#chassis.storage.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+
+
+
+# chassis.conditions.monitoring.enable - switch for manage agent count control 
+# Aggregete information from monitoring or not
+chassis.conditions.monitoring.enable=true
+chassis.conditions.min.agents.count=2
+
+# kernel count control
+chassis.conditions.min.kernels.count=2
+
+
+
+# Report format (PDF or HTML)
+chassis.master.reporting.report.format=PDF
+
+
+# Report file name
+chassis.master.reporting.report.file.name=report.pdf
+
+
+
+
+# Baseline session ID for session comparison. If this value is set to '#IDENTITY'
+# then session will be compared with itself (for testing purposes)
+chassis.engine.e1.reporting.session.comparison.baseline.session.id=#IDENTITY
+
+
+
+# Aggregete information from monitoring or not
+chassis.conditions.monitoring.enable=true
+
+
+
+# Propertis file that will be taken into consideration
+jagger.default.environment.properties=./configuration/basic/default.environment.properties
+
+
+# # # # # # # # More Properties # # # # # # # #
+
+
+
+# Use jBoss for serealisation or no
+chassis.util.usejboss=true
+
+
+
+# Size of buffer used for logging
+chassis.log.storage.buffer.flushing.size=1000
+
+
+
+# Zookeeper starts with that port, 2181 - default value
+clientPort=2181
+
+
+
+# Http Server starts with that port on COORDINATION_SERVER, 8089 - default
+chassis.coordination.http.port=8089
+
+
+
+# Port that H2 starts with
+#tcpPort=8043
+
+
+
+# Path to store logs , using localFileStorage
+#chassis.log.storage.file.workspace=${chassis.workspace}/storage
+
+
+
+# Absolute or relative path to Jagger workspace. Jagger uses this folder to store its files
+chassis.workspace=./jaggerworkspace
+
+
+
+# Reporting 
+
+# Location of root report template (Spring resource location format)
+chassis.master.reporting.root.report.template.location=configuration/reporting/report-container.jrxml
+
+# Turns on/off session comparison section
+chassis.engine.e1.reporting.session.comparison.active=true
+chassis.engine.e1.reporting.session.comparison.monitoring.active=false
+
+chassis.engine.e1.reporting.session.comparison.decision.maker.warning.deviation.threshold=0.5
+
+chassis.engine.e1.reporting.session.comparison.decision.maker.fatal.deviation.threshold=0.8
+
+# Affect for interval size in plots
+chassis.engine.e1.reporting.task.point.count=100
+chassis.engine.e1.reporting.task.monitoring.point.count=200
+
+chassis.monitoring.reporting.show.plots.for.each.global=true
+chassis.monitoring.reporting.show.plots.for.each.box=true
+chassis.monitoring.reporting.show.plots.for.each.sut=true
+
+chassis.monitoring.reporting.show.plots.show.numbers=true
+
+report.only=false
+# For REPORTER only
+#report.only=true
+report.session.id=106
+report.session.name=J4G session sample
+report.session.comment=
+
+
+# Hadoop start properties 
+hadoop.tmp.dir=${chassis.workspace}/master/storage/tmp
+hadoop.log.dir=${chassis.workspace}/master/storage/log
+hadoop.home.dir=${chassis.workspace}/master/storage/home
+hadoop.id.str=jagger
+dfs.name.dir=${chassis.workspace}/master/storage/hdfs/namedir
+fs.default.name=${chassis.storage.fs.default.name}
+dfs.replication=1
+dfs.support.append=true
+

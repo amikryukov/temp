@@ -78,10 +78,10 @@ Ochassis.roles=chassis.roles=MASTER,KERNEL,COORDINATION_SERVER,RDB_SERVER,HTTP_C
 
 
 #HDFS point address of Master Node
-0chassis.storage.fs.default.name=hdfs://172.56.45.222/ 
+chassis.storage.fs.default.name=hdfs://172.56.45.222/ 
 
 #use jBoss for serealisation or no
-0chassis.util.usejboss=true
+chassis.util.usejboss=true
 
 ############################################################
 
@@ -91,25 +91,25 @@ Ochassis.roles=chassis.roles=MASTER,KERNEL,COORDINATION_SERVER,RDB_SERVER,HTTP_C
 
 
 #name of session configuration bean that will be executed by master
-0chassis.master.session.configuration.bean.name=testHttpTargetConfiguration
+chassis.master.session.configuration.bean.name=testHttpTargetConfiguration
 #chassis.master.session.configuration.bean.name=testTcpTrafficTargetConfiguration
 
--#hadoop start properties (i do believe it is useless to show to user )
--hadoop.tmp.dir=${chassis.workspace}/master/storage/tmp
--hadoop.log.dir=${chassis.workspace}/master/storage/log
--hadoop.home.dir=${chassis.workspace}/master/storage/home
--hadoop.id.str=jagger
--dfs.name.dir=${chassis.workspace}/master/storage/hdfs/namedir
--fs.default.name=${chassis.storage.fs.default.name}
--dfs.replication=1
--dfs.support.append=true
+#hadoop start properties (i do believe it is useless to show to user )
+hadoop.tmp.dir=${chassis.workspace}/master/storage/tmp
+hadoop.log.dir=${chassis.workspace}/master/storage/log
+hadoop.home.dir=${chassis.workspace}/master/storage/home
+hadoop.id.str=jagger
+dfs.name.dir=${chassis.workspace}/master/storage/hdfs/namedir
+fs.default.name=${chassis.storage.fs.default.name}
+dfs.replication=1
+dfs.support.append=true
 
 
 # chassis.log.storage.bean is bean name that implements FileStorage interface.
 # default were implemented localFileStorage (local mode only), hdfsStorage
-0chassis.log.storage.bean=localFileStorage
+chassis.log.storage.bean=localFileStorage
 
--chassis.log.storage.file.workspace=${chassis.workspace}/storage
+chassis.log.storage.file.workspace=${chassis.workspace}/storage
 
 #for logging should be changed only if it necessary (increase)
 chassis.log.storage.buffer.flushing.size=10000
