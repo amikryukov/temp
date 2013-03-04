@@ -112,7 +112,7 @@ Ochassis.roles=chassis.roles=MASTER,KERNEL,COORDINATION_SERVER,RDB_SERVER,HTTP_C
 -chassis.log.storage.file.workspace=${chassis.workspace}/storage
 
 #for logging should be changed only if it necessary (increase)
-chassis.log.storage.buffer.flushing.size=10000
+0chassis.log.storage.buffer.flushing.size=10000
 
 ############################################################
 
@@ -150,9 +150,6 @@ chassis.monitoring.reporting.show.plots.for.each.box=true
 chassis.monitoring.reporting.show.plots.for.each.sut=true
 
 chassis.monitoring.reporting.show.plots.show.numbers=true
-
-#aggregete information from monitoring or not
-chassis.conditions.monitoring.enable=true
 
 report.only=true
 report.session.id=106

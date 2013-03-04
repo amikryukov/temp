@@ -190,3 +190,61 @@ fs.default.name=${chassis.storage.fs.default.name}
 dfs.replication=1
 dfs.support.append=true
 
+
+# chassis.monitoring.pollinginterval interval in millis between monitoring polling
+chassis.monitoring.pollinginterval=2000
+# chassis.monitoring.profile.pollinginterval interval in millis between monitoring SuT polling for profiling
+chassis.monitoring.profile.pollinginterval=2000
+chassis.monitoring.command.execution.ttl=30000
+
+
+chassis.extensions.log.extensions=true
+
+
+# Reconnect period of MASTER/KERNEL to COORDINATIONA_SERVER
+chassis.coordinator.reconnect.period=5000
+
+
+# ZooKeeper session timeout
+chassis.coordinator.zookeeper.session.timeout=100000000
+chassis.coordinator.zookeeper.root.node=/root-001
+
+
+# the number of threads to keep in the pool, even if they are idle.
+chassis.executor.pool.core=5
+# maximumPoolSize the maximum number of threads to allow in the pool.
+chassis.executor.pool.max=20
+
+# Same for Zookeeper Coordinator
+chassis.zookeeper.executor.pool.core=2
+chassis.zookeeper.executor.pool.max=30
+
+chassis.monitoring.executor.pool.core=2
+chassis.monitoring.executor.pool.max=10
+
+
+chassis.master.distribution.start=300000
+chassis.master.distribution.stop=300000
+# 5 years = 157680000000
+chassis.master.task.maxtime=157680000000
+
+# 10 min = 600000
+chassis.master.node.awaittime=600000
+
+
+calibration.timeout=300000
+calibration.start.timeout=10000
+
+workload.start.timeout=30000
+workload.stop.timeout=3600000
+workload.polling.timeout=30000
+
+workload.tickinterval.default=1000
+workload.threads.maxcount=4000
+
+
+
+
+
+
+
