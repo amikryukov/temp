@@ -94,7 +94,6 @@ chassis.master.reporting.report.file.name=report.pdf
 
 
 
-
 # Baseline session ID for session comparison. If this value is set to '#IDENTITY'
 # then session will be compared with itself (for testing purposes)
 chassis.engine.e1.reporting.session.comparison.baseline.session.id=#IDENTITY
@@ -108,6 +107,7 @@ chassis.conditions.monitoring.enable=true
 
 # Propertis file that will be taken into consideration
 jagger.default.environment.properties=./configuration/basic/default.environment.properties
+
 
 
 # # # # # # # # More Properties # # # # # # # #
