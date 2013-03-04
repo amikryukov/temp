@@ -58,6 +58,7 @@ chassis.storage.fs.default.name=hdfs://172.56.45.222/
 
 
 # Parameters of JDBC (H2 and MySQL are currently supported) - default is H2
+# Size of batch to store
 chassis.storage.hibernate.batch_size=50
 
 chassis.storage.rdb.client.driver=org.h2.Driver
@@ -101,11 +102,6 @@ chassis.engine.e1.reporting.session.comparison.baseline.session.id=#IDENTITY
 
 
 
-# Aggregete information from monitoring or not
-chassis.conditions.monitoring.enable=true
-
-
-
 # Propertis file that will be taken into consideration
 jagger.default.environment.properties=./configuration/basic/default.environment.properties
 
@@ -116,7 +112,7 @@ jagger.default.environment.properties=./configuration/basic/default.environment.
 
 
 
-# Use jBoss for serealisation or no
+# Use jBoss for serealisation or not
 chassis.util.usejboss=true
 
 
@@ -149,22 +145,30 @@ chassis.workspace=./jaggerworkspace
 # Location of root report template (Spring resource location format)
 chassis.master.reporting.root.report.template.location=configuration/reporting/report-container.jrxml
 
-# Turns on/off session comparison section
-chassis.engine.e1.reporting.session.comparison.active=true
-chassis.engine.e1.reporting.session.comparison.monitoring.active=false
 
+?not used?
+?# Turns on/off session comparison section
+?chassis.engine.e1.reporting.session.comparison.active=true
+?chassis.engine.e1.reporting.session.comparison.monitoring.active=false
+
+
+# Allowable deviation while comparing sessions
 chassis.engine.e1.reporting.session.comparison.decision.maker.warning.deviation.threshold=0.5
 
 chassis.engine.e1.reporting.session.comparison.decision.maker.fatal.deviation.threshold=0.8
+
 
 # Affect for interval size in plots
 chassis.engine.e1.reporting.task.point.count=100
 chassis.engine.e1.reporting.task.monitoring.point.count=200
 
+# Create general global task plots
 chassis.monitoring.reporting.show.plots.for.each.global=true
+# Create general box task plots
 chassis.monitoring.reporting.show.plots.for.each.box=true
+# Create general sut task plots
 chassis.monitoring.reporting.show.plots.for.each.sut=true
-
+# Show numbers of tasks in report
 chassis.monitoring.reporting.show.plots.show.numbers=true
 
 report.only=false
@@ -174,7 +178,7 @@ report.session.id=106
 report.session.name=J4G session sample
 report.session.comment=
 
-
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # chassis.monitoring.pollinginterval interval in millis between monitoring polling
 chassis.monitoring.pollinginterval=2000
