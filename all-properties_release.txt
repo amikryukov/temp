@@ -150,10 +150,10 @@ chassis.util.usejboss=true
 #chassis.master.reporting.root.report.template.location=configuration/reporting/report-container.jrxml
 
 
-?not used?
-?# Turns on/off session comparison section
-?chassis.engine.e1.reporting.session.comparison.active=true
-?chassis.engine.e1.reporting.session.comparison.monitoring.active=false
+
+# Turns on/off session comparison section
+chassis.engine.e1.reporting.session.comparison.active=false
+chassis.engine.e1.reporting.session.comparison.monitoring.active=false
 
 
 # Allowable deviation while comparing sessions
@@ -166,14 +166,14 @@ chassis.util.usejboss=true
 #chassis.engine.e1.reporting.task.point.count=100
 #chassis.engine.e1.reporting.task.monitoring.point.count=200
 
-?# Create general global task plots
-?chassis.monitoring.reporting.show.plots.for.each.global=true
-?# Create general box task plots
-?chassis.monitoring.reporting.show.plots.for.each.box=true
-?# Create general sut task plots
-?chassis.monitoring.reporting.show.plots.for.each.sut=true
-?# Show numbers of tasks in report
-?chassis.monitoring.reporting.show.plots.show.numbers=true
+# Create general global task plots
+chassis.monitoring.reporting.show.plots.for.each.global=true
+# Create general box task plots
+chassis.monitoring.reporting.show.plots.for.each.box=true
+# Create general sut task plots
+chassis.monitoring.reporting.show.plots.for.each.sut=true
+# Show numbers of tasks in report
+chassis.monitoring.reporting.show.plots.show.numbers=true
 
 
 # For REPORTER only
@@ -204,8 +204,8 @@ chassis.util.usejboss=true
 
 # ZooKeeper session timeout
 chassis.coordinator.zookeeper.session.timeout=100000000
-?# Path of zookeeper 
-?chassis.coordinator.zookeeper.root.node=/root-001
+# Path of zookeeper 
+chassis.coordinator.zookeeper.root.node=/root-001
 
 
 
@@ -245,13 +245,13 @@ chassis.coordinator.zookeeper.session.timeout=100000000
 
 
 # Termination time of operations
-workload.start.timeout=30000
-workload.stop.timeout=3600000
-workload.polling.timeout=30000
+#workload.start.timeout=30000
+#workload.stop.timeout=3600000
+#workload.polling.timeout=30000
 
 
 
-# Adjusts workload processes sleep time while termination till termination is required.
+# Colock tick time
 #workload.tickinterval.default=1000
 
 # Limit of workload threads
